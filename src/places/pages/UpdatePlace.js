@@ -44,10 +44,10 @@ const UpdatePlace = (props) => {
     }
 
     return <form>
-        <Input id="title" element="input" type="text" label="Title" validator={[VALIDATOR_REQUIRE()]}
+        <Input id="title" element="input" type="text" label="Title" validators={[VALIDATOR_REQUIRE()]}
                errorText="Please enter a valid title." onInput={() => {
         }} value={identifiedPlace.title} valid={true}/>
-        <Input id="description" element="textarea" label="Description" validator={[VALIDATOR_MINLENGTH(5)]}
+        <Input id="description" element="textarea" label="Description" validators={[VALIDATOR_MINLENGTH(5)]}
                errorText="Please enter a valid description (at least 5 characters)." onInput={() => {
         }} value={identifiedPlace.description} valid={true}/>
         <Button type="submit" disabled={true}>UPDATE PLACE</Button>
