@@ -8,7 +8,7 @@ Clone the repository
 git clone https://github.com/otavioramos/mern-course-frontend.git
 ```
 
-Install the dependencys in your machine
+Install the dependencies in your machine
 ```
 npm install
 ```
