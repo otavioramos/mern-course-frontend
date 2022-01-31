@@ -2,8 +2,8 @@
 A frontend project created with React to a simple website called YourPlaces
 
 ## How to run the project
-<hr/>
 Clone the repository
+
 ```
 git clone https://github.com/otavioramos/mern-course-frontend.git
 ```
@@ -17,7 +17,6 @@ Execute the script to start the react development server
 ```
 npm start
 ```
-## Links
-<hr/>
 
+## Links
 [M.E.R.N. Udemy Course](https://www.udemy.com/course/react-nodejs-express-mongodb-the-mern-fullstack-guide/)
