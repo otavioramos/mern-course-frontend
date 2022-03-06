@@ -10,11 +10,9 @@ const Users = () => {
   const { sendRequest, clearError, error, isLoading } = useHttpClient();
 
   useEffect(() => {
-    try {
-      sendRequest("http://localhost:5000/api/user").then((responseData) =>
-        setLoadedUsers(responseData.users)
-      );
-    } catch (err) {}
+    sendRequest("http://localhost:5000/api/user")
+      .then((responseData) => setLoadedUsers(responseData.users))
+      .catch((err) => {});
   }, [sendRequest]);
 
   return (

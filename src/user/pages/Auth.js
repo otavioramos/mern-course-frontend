@@ -58,40 +58,38 @@ const Auth = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  const authSubmitHandler = async (event) => {
+  const authSubmitHandler = (event) => {
     event.preventDefault();
 
     if (isLoginMode) {
-      try {
-        await sendRequest(
-          "http://localhost:5000/api/user/login",
-          "POST",
-          JSON.stringify({
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        auth.login();
-      } catch (err) {}
+      sendRequest(
+        "http://localhost:5000/api/user/login",
+        "POST",
+        JSON.stringify({
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+        }),
+        {
+          "Content-Type": "application/json",
+        }
+      )
+        .then(() => auth.login())
+        .catch((err) => {});
     } else {
-      try {
-        await sendRequest(
-          "http://localhost:5000/api/user/signup",
-          "POST",
-          JSON.stringify({
-            name: formState.inputs.name.value,
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        auth.login();
-      } catch (err) {}
+      sendRequest(
+        "http://localhost:5000/api/user/signup",
+        "POST",
+        JSON.stringify({
+          name: formState.inputs.name.value,
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+        }),
+        {
+          "Content-Type": "application/json",
+        }
+      )
+        .then(() => auth.login())
+        .catch((err) => {});
     }
   };
 
