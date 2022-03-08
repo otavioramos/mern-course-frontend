@@ -73,7 +73,9 @@ const Auth = () => {
           "Content-Type": "application/json",
         }
       )
-        .then(() => auth.login())
+        .then((responseData) => {
+          auth.login(responseData.user.id);
+        })
         .catch((err) => {});
     } else {
       sendRequest(
@@ -88,7 +90,9 @@ const Auth = () => {
           "Content-Type": "application/json",
         }
       )
-        .then(() => auth.login())
+        .then(() => (responseData) => {
+          auth.login(responseData.user.id)
+        })
         .catch((err) => {});
     }
   };
