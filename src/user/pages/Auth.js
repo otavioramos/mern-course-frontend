@@ -130,8 +130,8 @@ const Auth = () => {
             id="password"
             type="password"
             label="Password"
-            errorText="Please enter a valid password (at least 8 characters)."
-            validators={[VALIDATOR_MINLENGTH(8)]}
+            errorText="Please enter a valid password (at least 6 characters)."
+            validators={[VALIDATOR_MINLENGTH(6)]}
             onInput={inputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
