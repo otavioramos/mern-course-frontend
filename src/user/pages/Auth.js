@@ -64,11 +64,12 @@ const Auth = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  const authSubmitHandler = (event) => {
+  const authSubmitHandler = async event => {
     event.preventDefault();
 
     if (isLoginMode) {
-      sendRequest(
+      try {
+        const responseData = await sendRequest(
         "http://localhost:5000/api/user/login",
         "POST",
         JSON.stringify({
@@ -77,12 +78,11 @@ const Auth = () => {
         }),
         {
           "Content-Type": "application/json",
-        }
-      )
-        .then((responseData) => {
-          auth.login(responseData.user.id);
         })
-        .catch((err) => {});
+        auth.login(responseData.user.id);
+      }
+      catch(err) {}
+       
     } else {
       const formData = new FormData();
       formData.append("email", formState.inputs.email.value);
@@ -90,11 +90,11 @@ const Auth = () => {
       formData.append("password", formState.inputs.password.value);
       formData.append("image", formState.inputs.image.value);
 
-      sendRequest("http://localhost:5000/api/user/signup", "POST", formData)
-        .then(() => (responseData) => {
-          auth.login(responseData.user.id);
-        })
-        .catch((err) => {});
+      try {
+        const responseData = await sendRequest("http://localhost:5000/api/user/signup", "POST", formData)
+        auth.login(responseData.user.id);
+      }
+      catch(err) {};
     }
   };
 
