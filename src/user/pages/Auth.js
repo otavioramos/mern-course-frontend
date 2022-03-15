@@ -13,6 +13,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import "./Auth.css";
 
 const Auth = () => {
@@ -40,6 +41,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
+          image: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -51,6 +53,10 @@ const Auth = () => {
             value: "",
             isValid: false,
           },
+          image: {
+            value: null,
+            isValid: false,
+          },
         },
         false
       );
@@ -60,6 +66,8 @@ const Auth = () => {
 
   const authSubmitHandler = (event) => {
     event.preventDefault();
+
+    console.log(formState.inputs);
 
     if (isLoginMode) {
       sendRequest(
@@ -91,7 +99,7 @@ const Auth = () => {
         }
       )
         .then(() => (responseData) => {
-          auth.login(responseData.user.id)
+          auth.login(responseData.user.id);
         })
         .catch((err) => {});
     }
@@ -115,6 +123,9 @@ const Auth = () => {
               errorText="Please enter a name"
               onInput={inputHandler}
             />
+          )}
+          {!isLoginMode && (
+            <ImageUpload center id="image" onInput={inputHandler} />
           )}
           <Input
             element="input"
