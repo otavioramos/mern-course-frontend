@@ -18,5 +18,9 @@ Execute the script to start the react development server
 npm start
 ```
 
+## Running on production (no longer available)
+
+![Application running](app-running.png "Running")
+
 ## Links
 [M.E.R.N. Udemy Course](https://www.udemy.com/course/react-nodejs-express-mongodb-the-mern-fullstack-guide/)
